@@ -1,12 +1,18 @@
-require_relative "Piece"
-class King < Piece #King && Knight
-  include "SteppingPiece"
-  def symbol
-    
-  end
+require_relatrequire_relative "Piece"
+require_relative "Step"
+
+class King < Piece 
   
-  protected
+  include SteppingPiece
+  
+  def symbol
+    @color == :white ? ♔ : ♚
+  end 
+  
   def move_diffs
-    
-  end
-end
+    [[1, 1], [-1, -1], [0, -1], [0, 1], [1, 0], [-1, 0], [-1, 1], [1, -1]]
+  end 
+  
+  
+  
+end 

@@ -31,6 +31,10 @@ module SlidingPiece
         new_positions[0] += diff[0]
         new_positions[1] += diff[1]
       end
+      
+      
+      arr << new_positions if @board[new_positions] && @board[new_positions].color != @color
+      
     end
     arr
   end  
