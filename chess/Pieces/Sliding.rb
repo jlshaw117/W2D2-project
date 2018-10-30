@@ -23,10 +23,16 @@ module SlidingPiece
     value = move_dirs
     value.each do |diff|
       new_positions = @pos.dup
-        until @board[new_positions].class != NullPiece
-          arr << new_positions
-        end
+      new_positions[0] += diff[0]
+      new_positions[1] += diff[1]
+      
+      until @board[new_positions].class != NullPiece
+        arr << new_positions
+        new_positions[0] += diff[0]
+        new_positions[1] += diff[1]
+      end
     end
     arr
   end  
+  
 end
