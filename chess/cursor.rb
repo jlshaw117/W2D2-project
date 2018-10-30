@@ -83,10 +83,19 @@ class Cursor
       update_pos(MOVE[key])
       nil
     when :ctrl_c
-      
+        Process.exit(0)
     end
   end
 
   def update_pos(diff)
+    dupped_pos = @cursor_pos.dup
+    
+    dupped_pos[0] += diff[0]
+    dupped_pos[1] += diff[1]
+    
+    if @board.valid_pos?(dupped_pos)
+      @cursor_pos = dupped_pos
+    end 
+    
   end
 end
