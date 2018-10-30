@@ -21,7 +21,8 @@ class Board
     @board[0][1] = Knight.new(:white, @board, [0, 1])
     @board[0][6] = Knight.new(:white, @board, [0, 6])
     @board[7][1] = Knight.new(:black, @board, [7, 1])
-    @board[7][6] = Knight.new(:black, @board, [7, 6])    
+    @board[7][6] = Knight.new(:black, @board, [7, 6])   
+    
     
     @board
   end
