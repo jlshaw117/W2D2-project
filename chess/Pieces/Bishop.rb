@@ -1,12 +1,12 @@
 require_relative "Piece"
 require_relative "Sliding"
 
-class Rook < Piece 
+class Bishop < Piece 
   
   include SlidingPiece
   
   def symbol
-    @color == :white ? ♗ : ♝
+    @color == :white ? '♗' : '♝'
   end 
   
   def move_dirs

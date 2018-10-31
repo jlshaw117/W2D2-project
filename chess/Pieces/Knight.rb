@@ -6,7 +6,7 @@ class Knight < Piece
   include SteppingPiece
   
   def symbol
-    @color == :white ? ♘ : ♞
+    @color == :white ? "♘" : "♞"
   end 
   
   def move_diffs

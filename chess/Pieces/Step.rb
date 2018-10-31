@@ -13,7 +13,7 @@ module SteppingPiece
         
     end
     arr.reject! {|pos| @board[pos].color == @color}
-    arr.select {|pos| @board.valid_move?(pos)}
+    arr.select {|pos| @board.valid_pos?(pos)}
   end
   
   

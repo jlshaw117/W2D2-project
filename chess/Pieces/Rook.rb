@@ -6,7 +6,7 @@ class Rook < Piece
   include SlidingPiece
   
   def symbol
-    @color == :white ? ♖ : ♜
+    @color == :white ? '♖' : '♜'
   end 
   
   def move_dirs

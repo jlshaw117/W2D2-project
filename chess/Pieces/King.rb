@@ -1,4 +1,4 @@
-require_relatrequire_relative "Piece"
+require_relative "Piece"
 require_relative "Step"
 
 class King < Piece 
@@ -6,7 +6,7 @@ class King < Piece
   include SteppingPiece
   
   def symbol
-    @color == :white ? ♔ : ♚
+    @color == :white ? '♔' : '♚'
   end 
   
   def move_diffs

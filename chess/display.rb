@@ -12,46 +12,52 @@ class Display
   end
   
   def render
-    # arr = Array.new(8) { Array.new(8) }
+    system "clear"
     @board.grid.each_with_index do |sub, j|
       puts "\n"
       sub.each_with_index do |piece, i|
         if cursor.cursor_pos == [j,i]
-          print ' d '.colorize(background: :red)
+          print @board[[j, i]].to_s.colorize(background: :red)
         
         elsif j.even?
           if i.even?
-            print ' E '.colorize(:color => :black, background: :green)
+            print @board[[j, i]].to_s.colorize( background: :green)
           else
-            print ' O '.colorize(:color => :black).colorize(:background => :blue)
+            print @board[[j, i]].to_s.colorize(:background => :blue)
           end 
         else
           if i.odd?
-            print ' E '.colorize(:color => :black, background: :green)
+            print @board[[j, i]].to_s.colorize(background: :green)
           else
-            print ' O '.colorize(:color => :black).colorize(:background => :blue)
+            print @board[[j, i]].to_s.colorize(:background => :blue)
           end 
         end
       end
       
     end
-    # if cursor.cursor_pos
-    #   @board[@cursor.cursor_pos].colorize(background: :red)
-    # end 
+  
     nil
   end 
   
   def play
     
     while true
-      system "clear"
       render
-      @cursor.get_input
-      p @cursor.cursor_pos
+      start_pos = nil
+      until start_pos
+        start_pos = @cursor.get_input
+        render
+      end 
+      start_pos
+      end_pos = nil
+      
+      until end_pos
+        end_pos = @cursor.get_input
+        render
+      end
+      @board.move_piece(start_pos, end_pos)
     end 
-    
   end
-  
 end 
 
 if __FILE__ == $PROGRAM_NAME

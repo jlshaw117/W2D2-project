@@ -1,7 +1,7 @@
+require "byebug"
 module SlidingPiece
-  attr_reader :
   
-   DIRECTIONS {
+   DIRECTIONS = {
      :horizontal => [[0,1], [0,-1], [1,0], [-1,0]],
      :diagonal => [[1, 1], [-1, -1], [-1, 1], [1, -1]]
    }
@@ -20,6 +20,7 @@ module SlidingPiece
   
   def moves
     arr = []
+
     value = move_dirs
     value.each do |diff|
       new_positions = @pos.dup
@@ -27,13 +28,15 @@ module SlidingPiece
       new_positions[1] += diff[1]
       
       until @board[new_positions].class != NullPiece
-        arr << new_positions
+            debugger
+        arr << new_positions.dup
         new_positions[0] += diff[0]
         new_positions[1] += diff[1]
+        break unless @board.valid_pos?(new_positions)
       end
       
       
-      arr << new_positions if @board[new_positions] && @board[new_positions].color != @color
+      arr << new_positions if @board.valid_pos?(new_positions) && @board[new_positions].color != @colors
       
     end
     arr
